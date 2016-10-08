@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dotsApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="angular.min.js"></script>
+</head>
+
+<body>
+    <!-- <div>
+        <h1>Игра точки</h1>
+    </div> -->
+    <div class="field_wrapper" ng-controller="dotsController">
+        <div id="cleanArea" ng-controller="textController" class="myConsole1">
+            <div id="testId" class="notes">
+                <div id="redCol"></div>
+                <div id="greenCol"></div>
+                Изменить цвет
+            </div>
+            <div class="buttons">
+                <div>
+                    <button ng-click="buttonSave()">Save</button>
+                    <button ng-click="buttonLoad()">Load</button>
+                    <button ng-click="buttonRestore()">Restore</button>
+                </div>
+                <div>
+                    <button ng-click="buttonPlay()">Play</button>
+                    <button ng-click="buttonPushOneDot()">Push One</button>
+                    <button ng-click="buttonStop()">Stop</button>
+                </div>
+                <div>
+                    <button ng-click="buttonNew()">New</button>
+                    
+                </div>
+            </div>
+            <!-- <ul>
+                <li ng-repeat="text in chat track by $index">{{text}}</li>
+            </ul> -->
+        </div>
+        <canvas ng-mousemove="canvasNgHover($event)" ng-mousedown="canvasNgMousedown($event)" class="field_canvas" id="myCanvas">
+            <!-- <ng-repeat=" dot in dotsPosition"> -->
+        </canvas>
+        <div class="myConsole2">
+            <ul>
+                <li ng-model="nn">Последняя точка: {{nn}}</li>
+                <li>Ваш цвет: <span ng-model="myColor" ng-model="dotColor" ng-style="{'background-color': dotColor[myColor], 'padding-left': '20px','margin-left': '10px', opacity: '.6'}"></span></li>
+                <li ng-model="capturedDots">Точек захвачено: {{capturedDots}}</li>
+                <li ng-model="occupiedArea">Площадь захваченая : {{occupiedArea}} клеток</li>
+                <li ng-model="enemyCapturedDots">Точек захвачено противником: {{enemyCapturedDots}}</li>
+                <li ng-model="enemyOccupiedArea">Площадь захваченая противником : {{enemyOccupiedArea}} клеток</li>
+                <li ng-model="nOfTurn">Номер хода: {{nOfTurn}}</li>
+            </ul>
+            <a href="#" ng-click="refresh()" style="display: block; text-align: center; text-decoration: none;">Обновить поле</a>
+        </div>
+        <div ng-model="nnHelper" ng-model="ab" ng-hide="nnHelper ==-1" class="helperStyle" ng-style="{top: + y + 'px', left: + x + 'px', opacity: 0.7}"> nn:{{nnHelper}}, a:{{ab[0]}} , b:{{ab[1]}} </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="controllertest.js"></script>
+</body>
+
+</html>
